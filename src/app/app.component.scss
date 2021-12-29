@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+.navbar {
+  padding: 0;
+
+  .navbar-nav {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-style: italic;
+
+    .nav-link {
+      &.active {
+        color: #000;
+        background-color: #fff;
+      }
+    }
+  }
+}

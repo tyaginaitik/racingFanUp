@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('racingFanUp');
   });
 
-  it('should render title', () => {
+  it('should render isMenuCollapsed', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('racingFanUp app is running!');
+    const app = fixture.componentInstance;
+    expect(app.isMenuCollapsed).toBeTruthy();
   });
 });

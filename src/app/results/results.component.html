@@ -1,0 +1,61 @@
+<p class="h3">Results</p>
+<form>
+  <div class="form-group form-inline">
+    Quick search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm" />
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Rank</th>
+          <th scope="col">#</th>
+          <th scope="col" sortable="driver" (sort)="onSort($event)">Driver</th>
+          <th scope="col" sortable="chassis" (sort)="onSort($event)">Chassis</th>
+          <th scope="col" sortable="engine" (sort)="onSort($event)">Engine</th>
+          <th scope="col">Laps</th>
+          <th scope="col">Time</th>
+          <th scope="col">Gap</th>
+          <th scope="col">Interval</th>
+          <th scope="col">km/h</th>
+          <th scope="col" sortable="points" (sort)="onSort($event)">Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="mainRow" *ngFor="let res of result$ | async">
+          <td scope="row">{{ res.rank }}</td>
+          <td scope="row">{{ res.teamRank }}</td>
+          <td class="d-flex">
+            <img [src]="res.flag" class="mr-2" style="width: 20px">
+            <ngb-highlight class="w-100" [result]="res.driverName" [term]="service.searchTerm"></ngb-highlight>
+            <img [src]="res.car_img" class="mr-2 ml-2" style="width: 100px">
+          </td>
+          <td>
+            <ngb-highlight [result]="res.chassis" [term]="service.searchTerm"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="res.engine" [term]="service.searchTerm"></ngb-highlight>
+          </td>
+          <td scope="row">{{ res.laps }}</td>
+          <td scope="row">{{ res.time }}</td>
+          <td scope="row">{{ res.gap }}</td>
+          <td scope="row">{{ res.interval }}</td>
+          <td scope="row">{{ res.km_h }}</td>
+          <td>
+            <ngb-highlight [result]="res.points | number" [term]="service.searchTerm"></ngb-highlight>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <option [ngValue]="5">5 items per page</option>
+      <option [ngValue]="10">10 items per page</option>
+      <option [ngValue]="15">15 items per page</option>
+    </select>
+  </div>
+
+</form>

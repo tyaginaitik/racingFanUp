@@ -1,0 +1,28 @@
+[{
+  "key":"home",
+  "display_name":"Home"
+},
+{
+  "key":"news",
+  "display_name":"News"
+},
+{
+  "key":"results",
+  "display_name":"Results"
+},
+{
+  "key":"photos",
+  "display_name":"Photos"
+},
+{
+  "key":"videos",
+  "display_name":"Videos"
+},
+{
+  "key":"standings",
+  "display_name":"Standings"
+},
+{
+  "key":"about",
+  "display_name":"About"
+}]
